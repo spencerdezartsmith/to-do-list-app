@@ -1,5 +1,16 @@
 # To Do List
+# Team Info:
 
+Team-name: truculent-vulture
+
+Authors: [@josemoreno90, Jose Moreno](https://github.com/josemoreno90), [@spencerdezartsmith, Spencer Dezart-Smith](https://github.com/spencerdezartsmith)
+
+JS Dev Link:
+
+Review Link:
+https://github.com/spencerdezartsmith/to-do-list-app.git
+
+# Project Notes for the Reviewer
 ## Challenge Rating
 
 This goal will likely be within your ZPD if you...
