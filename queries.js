@@ -33,13 +33,27 @@ let createTodo = (req, res, next) => {
       });
     })
     .catch(err => {
-      return next(err)
+      return next(err);
     });
-    console.log("This is the request body" + req.body);
+}
+
+let updateTodo = (req, res, next) => {
+  db.none('update todos set description = $1, status = $2, due = $3 WHERE id = $4', [req.body.description, req.body.status, req.body.due, req.params.id])
+    .then (() => {
+      res.status(200)
+      .json({
+        status: 'success',
+        message: 'updated todo'
+      });
+    })
+    .catch(err => {
+      return next(err);
+    })
 }
 
 
 module.exports = {
   getAllTodos: getAllTodos,
-  createTodo: createTodo
+  createTodo: createTodo,
+  updateTodo: updateTodo
 };
