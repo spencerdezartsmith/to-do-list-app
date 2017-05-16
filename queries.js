@@ -23,6 +23,23 @@ let getAllTodos = (req, res, next) => {
     });
 }
 
+let createTodo = (req, res, next) => {
+  db.none('insert into todos(description, status, due)' + 'values($1, $2, $3)', [req.body.description, req.body.status, req.body.due])
+    .then(() => {
+      res.status(200)
+      .json({
+        status: 'success',
+        message: 'inserted a todo'
+      });
+    })
+    .catch(err => {
+      return next(err)
+    });
+    console.log("This is the request body" + req.body);
+}
+
+
 module.exports = {
-  getAllTodos: getAllTodos
+  getAllTodos: getAllTodos,
+  createTodo: createTodo
 };
