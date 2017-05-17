@@ -21,16 +21,25 @@ const createTodo = (attributes) => {
     attributes.status,
     attributes.due
   ]
-
   return db.none(sql, variables)
 };
 
 const updateTodo = (id, attributes) => {
-  return db.none('update todos set description = $description, status = $status, due = $due WHERE id = $id')
+  attributes.id = parseInt(id)
+  const sql = 'update todos set description = $1, status = $2, due = $3 WHERE id = $4'
+
+  const variables = [
+    attributes.description,
+    attributes.status,
+    attributes.due,
+    attributes.id
+  ]
+  return db.none(sql, variables)
 };
 
 const deleteTodo = (id) => {
-  return db.result('delete from todos where id = $id')
+  objId = parseInt(id)
+  return db.none('delete from todos where id = $1', [objId])
 };
 
 module.exports = {

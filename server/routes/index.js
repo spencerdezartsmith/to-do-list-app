@@ -17,9 +17,20 @@ router.post('/api/todos', (req, res, next) => {
     .catch(err => next(err))
 });
 
-router.put('/api/todos/:id', db.updateTodo);
-router.delete('/api/todos/:id', db.deleteTodo);
+router.post('/api/todos/:id', (req, res, next) => {
+  db.updateTodo(req.params.id, req.body)
+    .then(() => {
+      res.redirect('/api/todos')
+    })
+    .catch(err => next(err))
+});
 
-
+router.post('/api/todos/remove/:id', (req, res, next) => {
+  db.deleteTodo(req.params.id)
+    .then(() => {
+      res.redirect('/api/todos')
+    })
+    .catch(err => next(err))
+});
 
 module.exports = router;
