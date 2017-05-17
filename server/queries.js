@@ -14,7 +14,15 @@ const getAllTodos = () => {
 };
 
 const createTodo = (attributes) => {
-  return db.none('insert into todos(description, status, due)' + 'values($description, $status, $due)')
+  const sql = 'insert into todos(description, status, due) values($1, $2, $3)'
+
+  const variables = [
+    attributes.description,
+    attributes.status,
+    attributes.due
+  ]
+
+  return db.none(sql, variables)
 };
 
 const updateTodo = (id, attributes) => {

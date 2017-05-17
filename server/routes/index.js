@@ -9,9 +9,14 @@ router.get('/api/todos', (req, res, next) => {
     .catch(err => next(err))
 });
 
+router.post('/api/todos', (req, res, next) => {
+  db.createTodo(req.body)
+    .then(() => {
+      res.redirect('/api/todos')
+    })
+    .catch(err => next(err))
+});
 
-
-router.post('/api/todos', db.createTodo);
 router.put('/api/todos/:id', db.updateTodo);
 router.delete('/api/todos/:id', db.deleteTodo);
 
