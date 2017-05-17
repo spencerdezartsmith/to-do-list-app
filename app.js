@@ -2,12 +2,12 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 
-const index = require('./routes/index');
+const index = require('./server/routes/index');
 
 const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'pug');
 
 
 app.use(bodyParser.json());
@@ -31,7 +31,7 @@ app.use((err, req, res, next) => {
 
   // render the error page
   res.status(err.status || 500);
-  res.send('error');
+  res.send(err);
 });
 
 app.listen(3000, () => {
