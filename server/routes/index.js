@@ -5,7 +5,9 @@ const db = require('../queries');
 
 router.get('/api/todos', (req, res, next) => {
   db.getAllTodos()
-    .then(todos => res.render('index'))
+    .then(todos => {
+      res.render('index', { todos })
+    })
     .catch(err => next(err))
 });
 
