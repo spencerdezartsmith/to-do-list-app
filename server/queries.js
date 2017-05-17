@@ -1,11 +1,12 @@
 const promise = require('bluebird');
+const config = require('./_config');
 
 const options = {
   promiseLib: promise
 };
 
 const pgp = require('pg-promise')(options);
-const connectionString = 'postgres://localhost:5432/todos';
+const connectionString = config.selectENV(process.env.NODE_ENV);
 const db = pgp(connectionString);
 
 let getAllTodos = (req, res, next) => {
