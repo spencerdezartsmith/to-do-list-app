@@ -17,7 +17,38 @@ describe('Todos', function() {
       done();
       });
   });
-  it('should add a SINGLE todo on /todos POST');
-  it('should update a SINGLE todo on /todo/<id> PUT');
-  it('should delete a SINGLE todo on /todo/<id> DELETE');
+
+  it('should add a SINGLE todo on /api/todos POST', (done) => {
+    chai.request(server)
+      .post('/api/todos')
+      .send({ "description": "fix hair", "status": false, "due": "09:00" })
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.message.should.equal('inserted a todo')
+      done();
+    });
+  });
+
+  it('should update a SINGLE todo on /todo/<id> PUT', (done) => {
+      chai.request(server)
+        .put('/api/todos/1')
+        .send({ "description": "finish challenge", "status": false, "due": "10:00" })
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.message.should.equal('updated todo');
+          res.should.be.json;
+        done();
+      });
+  });
+
+  it('should delete a SINGLE todo on /todo/<id> DELETE', (done) => {
+    chai.request(server)
+      .delete('/api/todos/1')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.message.should.equal('Removed 1 todo');
+      done();
+    });
+  });
 });
