@@ -22,4 +22,10 @@ $(document).ready(() => {
   $('#opener').click(() => {
     $('#dialog').dialog('open');
   })
+
+// Click listener for todo items
+  $('li').click(() => {
+    $(event.target).toggleClass('completed') 
+  })
+
 })
