@@ -1,11 +1,12 @@
 const promise = require('bluebird');
+const config = require('./_config');
 
 const options = {
   promiseLib: promise
 };
 
 const pgp = require('pg-promise')(options);
-const connectionString = 'postgres://localhost:5432/todos';
+const connectionString = config.selectENV(process.env.NODE_ENV);
 const db = pgp(connectionString);
 
 let getAllTodos = (req, res, next) => {
@@ -21,7 +22,7 @@ let getAllTodos = (req, res, next) => {
     .catch(err => {
       return next(err);
     });
-}
+};
 
 let createTodo = (req, res, next) => {
   db.none('insert into todos(description, status, due)' + 'values($1, $2, $3)', [req.body.description, req.body.status, req.body.due])
@@ -59,15 +60,11 @@ let deleteTodo = (req, res, next) => {
         status: 'success',
         message: `Removed ${result.rowCount} todo`
       })
-      console.log("Result " + result.rowCount);
-      console.log("This is the result" + result);
     })
     .catch(err => {
       return next(err);
     })
 };
-
-
 
 module.exports = {
   getAllTodos: getAllTodos,
