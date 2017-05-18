@@ -7,10 +7,11 @@ block content
       i#opener.fa.fa-plus
     ul
       each todo in todos
-        li.list-item
+        - var id = todo.id
+        li.list-item(id=id)
           span
             i.fa.fa-trash-o
-          |  #{todo.description}
+          |  #{todo.description} #{id}
     div#dialog
       form#form-data
         | New Todo: 
