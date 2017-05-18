@@ -14,11 +14,18 @@ block content
           |  #{todo.description}
           span#pencil
             i.fa.fa-pencil
-    div#dialog
-      form#form-data
+    div#newDialog
+      form#new-form-data
         | New Todo: 
-        input(type='text', name='description' id='desc')
+        input(type='text', name='description')
         br
         | Due:
+        input(type='text', name='due')
+    div#updateDialog
+      form#update-form-data
+        | Update Todo: 
+        input(type='text', name='description' id='desc')
+        br
+        | Update Due:
         input(type='text', name='due', id='due')
 					
