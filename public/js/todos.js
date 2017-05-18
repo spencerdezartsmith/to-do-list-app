@@ -31,7 +31,8 @@ $(document).ready(() => {
     if (target.hasClass('list-item')) {
       target.toggleClass('completed')
     } else if (target.hasClass('fa-trash-o')) {
-      console.log('DELETED!!!')
+      var id = target[0].closest('li').id
+      deleteTodo(id)
     }
 
   })
@@ -44,6 +45,15 @@ const postNewTodo = (data) => {
   }).done((response) => {
     console.log('It worked')
   }).fail((err) => {
-    console.log('It failed')
+    console.log(`It failed ${err}`)
   })
+}
+
+const deleteTodo = (id) => {
+  $.ajax({
+    url: `http://localhost:3000/api/todos/remove/${id}`,
+    type: 'delete'
+  })
+  .done(response => console.log(response))
+  .fail(err => console.log(err))
 }

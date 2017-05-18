@@ -9,14 +9,16 @@ block content
       each todo in todos
         - var id = todo.id
         li.list-item(id=id)
-          span
+          span#trash
             i.fa.fa-trash-o
-          |  #{todo.description} #{id}
+          |  #{todo.description}
+          span#pencil
+            i.fa.fa-pencil
     div#dialog
       form#form-data
         | New Todo: 
-        input(type='text', name='description')
+        input(type='text', name='description' id='desc')
         br
         | Due:
-        input(type='text', name='due')
+        input(type='text', name='due', id='due')
 					
