@@ -14,6 +14,8 @@ $(document).ready(() => {
     buttons: [{
       text: 'Add',
       click: function() {
+        let data = $('#form-data').serialize();
+        postNewTodo(data)
         $(this).dialog('close')
       }
     }]
@@ -34,3 +36,14 @@ $(document).ready(() => {
 
   })
 })
+
+const postNewTodo = (data) => {
+  $.post({
+    url: 'http://localhost:3000/api/todos',
+    data: data
+  }).done((response) => {
+    console.log('It worked')
+  }).fail((err) => {
+    console.log('It failed')
+  })
+}

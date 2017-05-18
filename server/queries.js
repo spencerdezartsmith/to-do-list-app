@@ -14,11 +14,10 @@ const getAllTodos = () => {
 };
 
 const createTodo = (attributes) => {
-  const sql = 'insert into todos(description, status, due) values($1, $2, $3)'
+  const sql = 'insert into todos(description, due) values($1, $2)'
 
   const variables = [
     attributes.description,
-    attributes.status,
     attributes.due
   ]
   return db.none(sql, variables)

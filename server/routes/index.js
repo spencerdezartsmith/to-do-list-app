@@ -14,9 +14,11 @@ router.get('/api/todos', (req, res, next) => {
 router.post('/api/todos', (req, res, next) => {
   db.createTodo(req.body)
     .then(() => {
+      console.log('success')
       res.redirect('/api/todos')
     })
     .catch(err => next(err))
+  console.log(req.body)
 });
 
 router.post('/api/todos/:id', (req, res, next) => {

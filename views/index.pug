@@ -12,9 +12,10 @@ block content
             i.fa.fa-trash-o
           |  #{todo.description}
     div#dialog
-      form
+      form#form-data
         | New Todo: 
-        input(type='text', name='new-todo')
+        input(type='text', name='description')
         br
         | Due:
         input(type='text', name='due')
+					
