@@ -97,8 +97,11 @@ const updateTodo = (id, data) => {
   $.ajax({
     url: `http://localhost:3000/api/todos/${id}`,
     type: 'put',
-    data: data
+    data: data,
+    dataType: 'json'
   })
-  .done(response => console.log(response))
+  .done((response) => {
+    $(document.getElementById(id))[0].childNodes[1].nodeValue = response.description
+  })
   .fail(err => console.log(err))
 }
