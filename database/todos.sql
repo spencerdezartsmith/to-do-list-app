@@ -6,9 +6,8 @@ CREATE DATABASE todos;
 CREATE TABLE todos (
   ID SERIAL PRIMARY KEY NOT NULL,
   description VARCHAR NOT NULL,
-  status BOOLEAN DEFAULT false,
-  due TIME NOT NULL
+  status BOOLEAN DEFAULT false
 );
 
-INSERT INTO todos (description, due)
-VALUES ('walk the dog', '08:00')
+INSERT INTO todos (description)
+VALUES ('walk the dog')

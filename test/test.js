@@ -21,7 +21,7 @@ describe('Todos', function() {
   it('should add a SINGLE todo on /api/todos POST', (done) => {
     chai.request(server)
       .post('/api/todos')
-      .send({ "description": "fix hair", "status": false, "due": "09:00" })
+      .send({ "description": "fix hair", "status": false })
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.json;
@@ -33,7 +33,7 @@ describe('Todos', function() {
   it('should update a SINGLE todo on /todo/<id> PUT', (done) => {
       chai.request(server)
         .put('/api/todos/1')
-        .send({ "description": "finish challenge", "status": false, "due": "10:00" })
+        .send({ "description": "finish challenge", "status": false })
         .end((err, res) => {
           res.should.have.status(200);
           res.body.message.should.equal('updated todo');

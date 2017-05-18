@@ -16,6 +16,7 @@ $(document).ready(() => {
     buttons: [{
       text: 'Add',
       click: function() {
+
         let data = $('#new-form-data').serialize();
         postNewTodo(data)
         $(this).dialog('close')
@@ -46,6 +47,7 @@ $(document).ready(() => {
   });
 
   $('#opener').click(() => {
+    $('#newDesc').val('')
     $('#newDialog').dialog('open');
   })
 
@@ -62,7 +64,7 @@ $(document).ready(() => {
       var description = target[0].closest('li').innerText
       updateID = target[0].closest('li').id
       $('#updateDialog').dialog('open')
-      $('#desc').val(description)
+      $('#updDesc').val(description)
     }
   })
 })

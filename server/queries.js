@@ -18,12 +18,11 @@ const getOneTodo = (id) => {
 }
 
 const createTodo = (attributes) => {
-  const sql = 'insert into todos(description, due) values($1, $2)'
+  const sql = 'insert into todos(description) values($1)'
   const findsql = 'select * from todos where description = $1'
 
   const variables = [
-    attributes.description,
-    attributes.due
+    attributes.description
   ]
   db.none(sql, variables)
   return db.one(findsql, variables)
@@ -31,11 +30,10 @@ const createTodo = (attributes) => {
 
 const updateTodo = (id, attributes) => {
   attributes.id = parseInt(id)
-  const sql = 'update todos set description = $1, due = $2 WHERE id = $3'
+  const sql = 'update todos set description = $1 WHERE id = $2'
 
   const variables = [
     attributes.description,
-    attributes.due,
     attributes.id
   ]
   return db.none(sql, variables)
