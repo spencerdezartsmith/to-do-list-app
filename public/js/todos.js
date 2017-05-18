@@ -1,3 +1,5 @@
+let updateID;
+
 $(document).ready(() => {
   $('#newDialog').dialog({
     title: 'Add New Todo',
@@ -37,7 +39,7 @@ $(document).ready(() => {
       text: 'Update',
       click: function() {
         let data = $('#update-form-data').serialize();
-        updateTodo(data)
+        updateTodo(updateID, data)
         $(this).dialog('close')
       }
     }]
@@ -68,13 +70,15 @@ $(document).ready(() => {
 const postNewTodo = (data) => {
   $.post({
     url: 'http://localhost:3000/api/todos',
-    data: data
+    data: data,
+    dataType: 'json'
   })
   .done((response) => {
-    console.log('It worked')
+    $('ul').append(`<li class="list-item" id=${response.id}><span id="trash"><i class="fa fa-trash-o"></i></span>
+    ${response.description}<span id="pencil"><i class="fa fa-pencil"></i></span></li>`)
   })
   .fail((err) => {
-    console.log(`It failed ${err}`)
+    console.log(`It failed ${err.message}`)
   })
 }
 
@@ -83,7 +87,9 @@ const deleteTodo = (id) => {
     url: `http://localhost:3000/api/todos/remove/${id}`,
     type: 'delete'
   })
-  .done(response => console.log(response))
+  .done((response) => {
+    $(document.getElementById(id)).fadeOut().remove()
+  })
   .fail(err => console.log(err))
 }
 
