@@ -24,8 +24,13 @@ $(document).ready(() => {
   })
 
 // Click listener for todo items
-  $('li').click(() => {
-    $(event.target).toggleClass('completed') 
-  })
+  $('ul').click(() => {
+    var target = $(event.target)
+    if (target.hasClass('list-item')) {
+      target.toggleClass('completed')
+    } else if (target.hasClass('fa-trash-o')) {
+      console.log('DELETED!!!')
+    }
 
+  })
 })
