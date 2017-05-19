@@ -81,7 +81,7 @@ const postNewTodo = (data) => {
     $(html).hide().appendTo('ul').fadeIn(1000);
   })
   .fail((err) => {
-    console.log(`It failed ${err.message}`)
+    alert(`It failed ${err.message}`)
   })
 }
 
@@ -95,7 +95,7 @@ const deleteTodo = (id) => {
       $(this).remove()
     })
   })
-  .fail(err => console.log(err))
+  .fail(err => alert(err))
 }
 
 const updateTodo = (id, data) => {
@@ -108,5 +108,5 @@ const updateTodo = (id, data) => {
   .done((response) => {
     $(document.getElementById(id))[0].childNodes[1].nodeValue = response.description
   })
-  .fail(err => console.log(err))
+  .fail(err => alert(err))
 }
