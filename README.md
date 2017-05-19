@@ -55,29 +55,29 @@ When working on this goal, you'll encounter questions like:
 
 #### General
 - [ ] Code uses a linter and there are no linting errors.
-- [ ] Repository includes a README file with basic installation and setup.
-- [ ] All dependencies are properly declared in `package.json`.
-- [ ] All major features are added via pull requests with a clear description and concise commit messages.
-- [ ] Every pull request has been reviewed by at least one other person.
-- [ ] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
+- [X] Repository includes a README file with basic installation and setup.
+- [X] All dependencies are properly declared in `package.json`.
+- [X] All major features are added via pull requests with a clear description and concise commit messages.
+- [X] Every pull request has been reviewed by at least one other person.
+- [X] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
 
 #### Functionality
-- [ ] Users can create to do list items.
-- [ ] Users can delete unwanted to do list items.
-- [ ] Users can check items off as completed.
-- [ ] Users can edit the text on existing to do list items.
-- [ ] UI renders to do items differently when they are completed (using a checkbox or some other indicator).
+- [X] Users can create to do list items.
+- [X] Users can delete unwanted to do list items.
+- [X] Users can check items off as completed.
+- [X] Users can edit the text on existing to do list items.
+- [X] UI renders to do items differently when they are completed (using a checkbox or some other indicator).
 - [ ] When an error occurs, the user is notified with modal message.\*
-- [ ] Backend uses Node.js and [Express][npm-express].
-- [ ] App persists to do list items in a database.
+- [X] Backend uses Node.js and [Express][npm-express].
+- [X] App persists to do list items in a database.
 
 #### Testing
 There are thorough tests for all functionality involved in interacting with the database.
-- [ ] There are tests for creating to do list items.
-- [ ] There are tests for deleting to do list items.
-- [ ] There are tests for completing to do list items.
-- [ ] There are tests for editing to do list items.
-- [ ] All tests are passing.
+- [X] There are tests for creating to do list items.
+- [X] There are tests for deleting to do list items.
+- [X] There are tests for completing to do list items.
+- [X] There are tests for editing to do list items.
+- [X] All tests are passing.
 
 \* A quick and easy way to do this is to use the `alert()` function.
 
