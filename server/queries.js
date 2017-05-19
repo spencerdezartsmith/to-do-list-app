@@ -19,7 +19,7 @@ const getOneTodo = (id) => {
 
 const createTodo = (attributes) => {
   const sql = 'insert into todos(description) values($1)'
-  const findsql = 'select * from todos where description = $1'
+  const findsql = 'select * from todos where description = $1 limit 1'
 
   const variables = [
     attributes.description

@@ -9,5 +9,6 @@ CREATE TABLE todos (
   status BOOLEAN DEFAULT false
 );
 
-INSERT INTO todos (description)
-VALUES ('walk the dog')
+INSERT INTO todos (description) VALUES ('walk the dog');
+INSERT INTO todos (description) VALUES ('learn the guitar');
+INSERT INTO todos (description) VALUES ('learn to program');

@@ -14,7 +14,8 @@ router.get('/api/todos', (req, res, next) => {
 router.get('/api/todos/:id', (req, res, next) => {
   db.getOneTodo(req.params.id)
     .then((todo) => {
-      res.send(todo)
+      res.statusCode = 200;
+      res.send(JSON.stringify(todo));
     })
     .catch(err => next(err))
 })
@@ -22,6 +23,7 @@ router.get('/api/todos/:id', (req, res, next) => {
 router.post('/api/todos', (req, res, next) => {
   db.createTodo(req.body)
     .then((todo) => {
+      res.statusCode = 200;
       res.send(JSON.stringify(todo))
     })
     .catch(err => next(err))
@@ -32,7 +34,10 @@ router.put('/api/todos/:id', (req, res, next) => {
   db.updateTodo(id, req.body)
     .then(() => {
       db.getOneTodo(id)
-        .then(todo => res.send(JSON.stringify(todo)))
+        .then(todo => {
+          res.statusCode = 200
+          res.send(JSON.stringify(todo))
+        })
         .catch(err => next(err))
     })
     .catch(err => next(err))

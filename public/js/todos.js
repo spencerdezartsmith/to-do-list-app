@@ -74,6 +74,9 @@ const postNewTodo = (data) => {
     url: 'http://localhost:3000/api/todos',
     data: data,
     dataType: 'json'
+    headers: {
+      'Content-Type':'application/json'
+    }
   })
   .done((response) => {
     const html = `<li class="list-item" id=${response.id}><span id="trash"><i class="fa fa-trash-o"></i></span>
@@ -88,7 +91,10 @@ const postNewTodo = (data) => {
 const deleteTodo = (id) => {
   $.ajax({
     url: `http://localhost:3000/api/todos/${id}`,
-    type: 'delete'
+    type: 'delete',
+    headers: {
+      'Content-Type':'application/json'
+    }
   })
   .done((response) => {
     $(document.getElementById(id)).fadeOut(500, () => {
@@ -104,6 +110,9 @@ const updateTodo = (id, data) => {
     type: 'put',
     data: data,
     dataType: 'json'
+    headers: {
+      'Content-Type':'application/json'
+    }
   })
   .done((response) => {
     $(document.getElementById(id))[0].childNodes[1].nodeValue = response.description
