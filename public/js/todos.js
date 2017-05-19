@@ -109,7 +109,7 @@ const updateTodo = (id, data) => {
     url: `http://localhost:3000/api/todos/${id}`,
     type: 'put',
     data: data,
-    dataType: 'json'
+    dataType: 'json',
     headers: {
       'Content-Type':'application/json'
     }
