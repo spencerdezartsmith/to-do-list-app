@@ -11,9 +11,16 @@ describe('Todos', function() {
       .get('/api/todos')
       .end((err, res) => {
         res.should.have.status(200);
-        res.should.be.json;
-        res.body.should.be.a('object');
-        res.body.status.should.eq('success');
+        res.should.be.html;
+      done();
+      });
+  });
+
+  it('should list 1 todo on /api/todos/<id> GET', (done) => {
+    chai.request(server)
+      .get('/api/todos/2')
+      .end((err, res) => {
+        res.should.have.status(200);
       done();
       });
   });
@@ -21,11 +28,9 @@ describe('Todos', function() {
   it('should add a SINGLE todo on /api/todos POST', (done) => {
     chai.request(server)
       .post('/api/todos')
-      .send({ "description": "fix hair", "status": false, "due": "09:00" })
+      .send({ "description": "fix hair" })
       .end((err, res) => {
         res.should.have.status(200);
-        res.should.be.json;
-        res.body.message.should.equal('inserted a todo')
       done();
     });
   });
@@ -33,21 +38,18 @@ describe('Todos', function() {
   it('should update a SINGLE todo on /todo/<id> PUT', (done) => {
       chai.request(server)
         .put('/api/todos/1')
-        .send({ "description": "finish challenge", "status": false, "due": "10:00" })
+        .send({ "description": "finish challenge" })
         .end((err, res) => {
           res.should.have.status(200);
-          res.body.message.should.equal('updated todo');
-          res.should.be.json;
         done();
       });
   });
 
   it('should delete a SINGLE todo on /todo/<id> DELETE', (done) => {
     chai.request(server)
-      .delete('/api/todos/1')
+      .delete('/api/todos/3')
       .end((err, res) => {
         res.should.have.status(200);
-        res.body.message.should.equal('Removed 1 todo');
       done();
     });
   });

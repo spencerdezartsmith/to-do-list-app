@@ -7,14 +7,19 @@ block content
       i#opener.fa.fa-plus
     ul
       each todo in todos
-        li.list-item
-          span
+        - var id = todo.id
+        li.list-item(id=id)
+          span#trash
             i.fa.fa-trash-o
           |  #{todo.description}
-    div#dialog
-      form
+          span#pencil
+            i.fa.fa-pencil
+    div#newDialog
+      form#new-form-data
         | New Todo: 
-        input(type='text', name='new-todo')
-        br
-        | Due:
-        input(type='text', name='due')
+        input(type='text', name='description', id='new')
+    div#updateDialog
+      form#update-form-data
+        | Update Todo: 
+        input(type='text', name='description' id='updDesc')
+					

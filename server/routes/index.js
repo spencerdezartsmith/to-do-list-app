@@ -11,26 +11,44 @@ router.get('/api/todos', (req, res, next) => {
     .catch(err => next(err))
 });
 
+router.get('/api/todos/:id', (req, res, next) => {
+  db.getOneTodo(req.params.id)
+    .then((todo) => {
+      res.statusCode = 200;
+      res.send(JSON.stringify(todo));
+    })
+    .catch(err => next(err))
+})
+
 router.post('/api/todos', (req, res, next) => {
   db.createTodo(req.body)
-    .then(() => {
-      res.redirect('/api/todos')
+    .then((todo) => {
+      res.statusCode = 200;
+      res.send(JSON.stringify(todo))
     })
     .catch(err => next(err))
 });
 
-router.post('/api/todos/:id', (req, res, next) => {
-  db.updateTodo(req.params.id, req.body)
+router.put('/api/todos/:id', (req, res, next) => {
+  const id = req.params.id
+  db.updateTodo(id, req.body)
     .then(() => {
-      res.redirect('/api/todos')
+      db.getOneTodo(id)
+        .then(todo => {
+          res.statusCode = 200
+          res.send(JSON.stringify(todo))
+        })
+        .catch(err => next(err))
     })
     .catch(err => next(err))
 });
 
-router.post('/api/todos/remove/:id', (req, res, next) => {
-  db.deleteTodo(req.params.id)
-    .then(() => {
-      res.redirect('/api/todos')
+router.delete('/api/todos/:id', (req, res, next) => {
+  const id = req.params.id
+  db.deleteTodo(id)
+    .then((response) => {
+      res.statusCode = 200
+      res.send('Deleted todo')
     })
     .catch(err => next(err))
 });
