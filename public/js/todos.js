@@ -73,7 +73,7 @@ const postNewTodo = (data) => {
   $.post({
     url: 'http://localhost:3000/api/todos',
     data: data,
-    dataType: 'json'
+    dataType: 'json',
     headers: {
       'Content-Type':'application/json'
     }
