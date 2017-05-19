@@ -11,6 +11,16 @@ Review Link:
 https://github.com/spencerdezartsmith/to-do-list-app.git
 
 # Project Notes for the Reviewer
+
+To run the project:
+
+* run npm install
+* run npm start
+
+To run tests:
+
+* run npm test
+
 ## Challenge Rating
 
 This goal will likely be within your ZPD if you...
