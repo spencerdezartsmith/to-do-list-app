@@ -64,7 +64,7 @@ When working on this goal, you'll encounter questions like:
 ## Specifications
 
 #### General
-- [ ] Code uses a linter and there are no linting errors.
+- [X] Code uses a linter and there are no linting errors.
 - [X] Repository includes a README file with basic installation and setup.
 - [X] All dependencies are properly declared in `package.json`.
 - [X] All major features are added via pull requests with a clear description and concise commit messages.
@@ -77,7 +77,7 @@ When working on this goal, you'll encounter questions like:
 - [X] Users can check items off as completed.
 - [X] Users can edit the text on existing to do list items.
 - [X] UI renders to do items differently when they are completed (using a checkbox or some other indicator).
-- [ ] When an error occurs, the user is notified with modal message.\*
+- [X] When an error occurs, the user is notified with modal message.\*
 - [X] Backend uses Node.js and [Express][npm-express].
 - [X] App persists to do list items in a database.
 
