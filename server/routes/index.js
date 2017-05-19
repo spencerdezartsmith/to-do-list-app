@@ -38,12 +38,12 @@ router.put('/api/todos/:id', (req, res, next) => {
     .catch(err => next(err))
 });
 
-router.delete('/api/todos/remove/:id', (req, res, next) => {
+router.delete('/api/todos/:id', (req, res, next) => {
   const id = req.params.id
   db.deleteTodo(id)
     .then((response) => {
       res.statusCode = 200
-      res.send(`Deleted ${response.rowCount} todo`)
+      res.send('Deleted todo')
     })
     .catch(err => next(err))
 });

@@ -13,7 +13,6 @@ describe('Todos', function() {
         res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('object');
-        res.body.status.should.eq('success');
       done();
       });
   });
@@ -25,7 +24,6 @@ describe('Todos', function() {
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.json;
-        res.body.message.should.equal('inserted a todo')
       done();
     });
   });
@@ -36,7 +34,6 @@ describe('Todos', function() {
         .send({ "description": "finish challenge", "status": false })
         .end((err, res) => {
           res.should.have.status(200);
-          res.body.message.should.equal('updated todo');
           res.should.be.json;
         done();
       });
@@ -47,7 +44,7 @@ describe('Todos', function() {
       .delete('/api/todos/1')
       .end((err, res) => {
         res.should.have.status(200);
-        res.body.message.should.equal('Removed 1 todo');
+        res.body.message.should.equal('Deleted todo');
       done();
     });
   });

@@ -76,8 +76,9 @@ const postNewTodo = (data) => {
     dataType: 'json'
   })
   .done((response) => {
-    $('ul').append(`<li class="list-item" id=${response.id}><span id="trash"><i class="fa fa-trash-o"></i></span>
-    ${response.description}<span id="pencil"><i class="fa fa-pencil"></i></span></li>`)
+    const html = `<li class="list-item" id=${response.id}><span id="trash"><i class="fa fa-trash-o"></i></span>
+    ${response.description}<span id="pencil"><i class="fa fa-pencil"></i></span></li>`
+    $(html).hide().appendTo('ul').fadeIn(1000);
   })
   .fail((err) => {
     console.log(`It failed ${err.message}`)
@@ -86,11 +87,13 @@ const postNewTodo = (data) => {
 
 const deleteTodo = (id) => {
   $.ajax({
-    url: `http://localhost:3000/api/todos/remove/${id}`,
+    url: `http://localhost:3000/api/todos/${id}`,
     type: 'delete'
   })
   .done((response) => {
-    $(document.getElementById(id)).fadeOut().remove()
+    $(document.getElementById(id)).fadeOut(500, () => {
+      $(this).remove()
+    })
   })
   .fail(err => console.log(err))
 }
