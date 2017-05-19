@@ -21,9 +21,9 @@ router.get('/api/todos/:id', (req, res, next) => {
 })
 
 router.post('/api/todos', (req, res, next) => {
+	console.log(req.body)
   db.createTodo(req.body)
     .then((todo) => {
-      res.statusCode = 200;
       res.send(JSON.stringify(todo))
     })
     .catch(err => next(err))
@@ -35,7 +35,6 @@ router.put('/api/todos/:id', (req, res, next) => {
     .then(() => {
       db.getOneTodo(id)
         .then(todo => {
-          res.statusCode = 200
           res.send(JSON.stringify(todo))
         })
         .catch(err => next(err))

@@ -51,10 +51,9 @@ $(document).ready(() => {
     $('#newDialog').dialog('open');
   })
 
-// Click listener for todo items
+  // Click listener for todo items
   $('ul').click(() => {
     var target = $(event.target)
-    // console.log(target)
     if (target.hasClass('list-item')) {
       target.toggleClass('completed')
     } else if (target.hasClass('fa-trash-o')) {
@@ -63,6 +62,7 @@ $(document).ready(() => {
     } else if (target[0].className == 'fa fa-pencil') {
       var description = target[0].closest('li').innerText
       updateID = target[0].closest('li').id
+      // open modal to update todo
       $('#updateDialog').dialog('open')
       $('#updDesc').val(description)
     }
@@ -73,10 +73,7 @@ const postNewTodo = (data) => {
   $.post({
     url: 'http://localhost:3000/api/todos',
     data: data,
-    dataType: 'json',
-    headers: {
-      'Content-Type':'application/json'
-    }
+    dataType: 'json'
   })
   .done((response) => {
     const html = `<li class="list-item" id=${response.id}><span id="trash"><i class="fa fa-trash-o"></i></span>
@@ -91,10 +88,7 @@ const postNewTodo = (data) => {
 const deleteTodo = (id) => {
   $.ajax({
     url: `http://localhost:3000/api/todos/${id}`,
-    type: 'delete',
-    headers: {
-      'Content-Type':'application/json'
-    }
+    type: 'delete'
   })
   .done((response) => {
     $(document.getElementById(id)).fadeOut(500, () => {
@@ -109,10 +103,7 @@ const updateTodo = (id, data) => {
     url: `http://localhost:3000/api/todos/${id}`,
     type: 'put',
     data: data,
-    dataType: 'json',
-    headers: {
-      'Content-Type':'application/json'
-    }
+    dataType: 'json'
   })
   .done((response) => {
     $(document.getElementById(id))[0].childNodes[1].nodeValue = response.description
